@@ -66,10 +66,10 @@ public class ToggleCommands {
 
         if (!wcfg.fireSpreadDisableToggle) {
             worldGuard.getPlatform().broadcastNotification(
-                    LabelFormat.wrap("Fire spread has been globally disabled for '" + world.getName() + "' by "
+                    LabelFormat.wrap("Распространение огня глобально отключено для '" + world.getName() + "' игроком "
                     + sender.getDisplayName() + "."));
         } else {
-            sender.print("Fire spread was already globally disabled.");
+            sender.print("Распространение огня уже было глобально отключено.");
         }
 
         wcfg.fireSpreadDisableToggle = true;
@@ -91,10 +91,10 @@ public class ToggleCommands {
         WorldConfiguration wcfg = WorldGuard.getInstance().getPlatform().getGlobalStateManager().get(world);
 
         if (wcfg.fireSpreadDisableToggle) {
-            worldGuard.getPlatform().broadcastNotification(LabelFormat.wrap("Fire spread has been globally for '" + world.getName() + "' re-enabled by "
+            worldGuard.getPlatform().broadcastNotification(LabelFormat.wrap("Распространение огня для '" + world.getName() + "' снова разрешено игроком "
                     + sender.getDisplayName() + "."));
         } else {
-            sender.print("Fire spread was already globally enabled.");
+            sender.print("Распространение огня уже было глобально разрешено.");
         }
 
         wcfg.fireSpreadDisableToggle = false;
@@ -109,9 +109,9 @@ public class ToggleCommands {
 
         if (args.hasFlag('i')) {
             if (configManager.activityHaltToggle) {
-                 sender.print("ALL intensive server activity is not allowed.");
+                 sender.print("ВСЯ интенсивная активность сервера запрещена.");
             } else {
-                 sender.print("ALL intensive server activity is allowed.");
+                 sender.print("ВСЯ интенсивная активность сервера разрешена.");
             }
         } else {
             boolean activityHaltToggle = !args.hasFlag('c');
@@ -120,18 +120,18 @@ public class ToggleCommands {
                 String confirmCommand = "/" + args.getCommand() + " confirm";
 
                 TextComponent message = TextComponent.builder("")
-                        .append(ErrorFormat.wrap("This command will "))
-                        .append(ErrorFormat.wrap("PERMANENTLY")
+                        .append(ErrorFormat.wrap("Эта команда "))
+                        .append(ErrorFormat.wrap("НАВСЕГДА")
                                 .decoration(TextDecoration.BOLD, TextDecoration.State.TRUE))
-                        .append(ErrorFormat.wrap(" erase ALL animals in ALL loaded chunks in ALL loaded worlds. "))
+                        .append(ErrorFormat.wrap(" удалит ВСЕХ животных во ВСЕХ загруженных чанках во ВСЕХ загруженных мирах. "))
                         .append(TextComponent.newline())
-                        .append(TextComponent.of("[Click]", TextColor.GREEN)
+                        .append(TextComponent.of("[Нажмите]", TextColor.GREEN)
                                 .clickEvent(ClickEvent.of(ClickEvent.Action.RUN_COMMAND, confirmCommand))
-                                .hoverEvent(HoverEvent.of(HoverEvent.Action.SHOW_TEXT, TextComponent.of("Click to confirm /" + args.getCommand()))))
-                        .append(ErrorFormat.wrap(" or type "))
+                                .hoverEvent(HoverEvent.of(HoverEvent.Action.SHOW_TEXT, TextComponent.of("Нажмите для подтверждения /" + args.getCommand()))))
+                        .append(ErrorFormat.wrap(" или введите "))
                         .append(CodeFormat.wrap(confirmCommand)
                                 .clickEvent(ClickEvent.of(ClickEvent.Action.SUGGEST_COMMAND, confirmCommand)))
-                        .append(ErrorFormat.wrap(" to confirm."))
+                        .append(ErrorFormat.wrap(" для подтверждения."))
                         .build();
 
                 sender.print(message);
@@ -142,13 +142,13 @@ public class ToggleCommands {
 
             if (activityHaltToggle) {
                 if (!(sender instanceof LocalPlayer)) {
-                    sender.print("ALL intensive server activity halted.");
+                    sender.print("ВСЯ интенсивная активность сервера остановлена.");
                 }
 
                 if (!args.hasFlag('s')) {
-                    worldGuard.getPlatform().broadcastNotification(LabelFormat.wrap("ALL intensive server activity halted by " + sender.getDisplayName() + "."));
+                    worldGuard.getPlatform().broadcastNotification(LabelFormat.wrap("ВСЯ интенсивная активность сервера остановлена игроком " + sender.getDisplayName() + "."));
                 } else {
-                    sender.print("(Silent) ALL intensive server activity halted by " + sender.getDisplayName() + ".");
+                    sender.print("(Тихо) ВСЯ интенсивная активность сервера остановлена игроком " + sender.getDisplayName() + ".");
                 }
 
                 for (World world : WorldEdit.getInstance().getPlatformManager().queryCapability(Capability.GAME_HOOKS).getWorlds()) {
@@ -162,19 +162,19 @@ public class ToggleCommands {
                     }
 
                     if (removed > 10) {
-                        sender.printRaw("" + removed + " entities (>10) auto-removed from "
+                        sender.printRaw("" + removed + " сущностей (>10) автоматически удалено из "
                                 + world.getName());
                     }
                 }
             } else {
                 if (!args.hasFlag('s')) {
-                    worldGuard.getPlatform().broadcastNotification(LabelFormat.wrap("ALL intensive server activity is now allowed."));
+                    worldGuard.getPlatform().broadcastNotification(LabelFormat.wrap("ВСЯ интенсивная активность сервера теперь разрешена."));
                     
                     if (!(sender instanceof LocalPlayer)) {
-                        sender.print("ALL intensive server activity is now allowed.");
+                        sender.print("ВСЯ интенсивная активность сервера теперь разрешена.");
                     }
                 } else {
-                    sender.print("(Silent) ALL intensive server activity is now allowed.");
+                    sender.print("(Тихо) ВСЯ интенсивная активность сервера теперь разрешена.");
                 }
             }
         }

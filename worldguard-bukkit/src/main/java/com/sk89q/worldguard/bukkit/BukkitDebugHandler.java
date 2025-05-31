@@ -81,7 +81,7 @@ public class BukkitDebugHandler implements DebugHandler {
             }
 
             target.sendMessage(
-                    ChatColor.RED + "(Please ignore any messages that may immediately follow.)");
+                    ChatColor.RED + "(Пожалуйста, проигнорируйте любые сообщения, которые могут появиться сразу после этого.)");
         }
 
         Bukkit.getPluginManager().callEvent(event);
@@ -91,7 +91,7 @@ public class BukkitDebugHandler implements DebugHandler {
         String result = report.toString();
 
         if (stacktraceMode) {
-            receiver.sendMessage(ChatColor.GRAY + "The report was printed to console.");
+            receiver.sendMessage(ChatColor.GRAY + "Отчёт был выведен в консоль.");
             log.info("Event report for " + receiver.getName() + ":\n\n" + result);
 
             plugin.checkPermission(receiver, "worldguard.debug.pastebin");
@@ -101,7 +101,7 @@ public class BukkitDebugHandler implements DebugHandler {
             receiver.sendMessage(result.replaceAll("(?m)^", ChatColor.AQUA.toString()));
 
             if (result.length() >= 500 && !isConsole) {
-                receiver.sendMessage(ChatColor.GRAY + "The report was also printed to console.");
+                receiver.sendMessage(ChatColor.GRAY + "Отчёт также был выведен в консоль.");
                 log.info("Event report for " + receiver.getName() + ":\n\n" + result);
             }
         }
@@ -124,7 +124,7 @@ public class BukkitDebugHandler implements DebugHandler {
                 return (Player) sender;
             } else {
                 throw new CommandException(
-                        "If this command is not to be used in-game, use -t to run the test from the viewpoint of the given player rather than yourself.");
+                        "Если эта команда не используется в игре, используйте -t для запуска теста от имени указанного игрока, а не себя.");
             }
         }
     }
@@ -151,7 +151,7 @@ public class BukkitDebugHandler implements DebugHandler {
             i++;
         }
 
-        throw new CommandException("Not currently looking at a block that is close enough.");
+        throw new CommandException("В данный момент вы не смотрите на достаточно близкий блок.");
     }
 
     /**
@@ -182,7 +182,7 @@ public class BukkitDebugHandler implements DebugHandler {
             i++;
         }
 
-        throw new CommandException("Not currently looking at an entity that is close enough.");
+        throw new CommandException("В данный момент вы не смотрите на достаточно близкое существо.");
     }
 
     @Override

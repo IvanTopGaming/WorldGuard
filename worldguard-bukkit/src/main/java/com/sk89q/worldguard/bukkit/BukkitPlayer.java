@@ -196,7 +196,7 @@ public class BukkitPlayer extends com.sk89q.worldedit.bukkit.BukkitPlayer implem
                             MessagingUtil.sendStringToChat(this, successMessage);
                         }
                     } else {
-                        printError(failMessage);
+                        printError("Не удалось телепортироваться.");
                     }
                     return success;
                 });
